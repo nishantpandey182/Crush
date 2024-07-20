@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photos</title>
+   <style>
+    *{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    box-shadow: 0px 4px 4px 0px #cf1d6d40,inset 0 0 0 1000px rgba(0,0,0,.5);
+    background-color: aliceblue;
+}
+
+main{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 3px 10px rgba(127, 137, 138, 0.3);
+    background-color: rgb(234, 90, 121);
+}
+
+.item{
+    width: 200px;
+    height: 300px;
+    list-style-type: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    box-shadow: 0px 20px 30px rgba(224, 59, 133, 0.923) inset;
+    transition: transform 0.1s , left 0.75s ,top 0.75s , width 0.75s , height 0.75s;
+      &:nth-child(1),&:nth-child(2) {  
+        left: 0 ;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        transform: none;
+        border-radius: 0;
+        box-shadow: none;
+        opacity: 1;
+    }
+
+    &:nth-child(3){ left: 50%;}
+    &:nth-child(4){ left: calc(50% + 220px);}
+    &:nth-child(5){ left: calc(50% + 440px);}
+    &:nth-child(6){ left: calc(50% + 660px);}
+    &:nth-child(7){ left: calc(50% + 880px);}
+    &:nth-child(8){ left: calc(50% + 1000px);}
+    &:nth-child(9){ left: calc(50% + 1220px);}
+    &:nth-child(10){ left: calc(50% + 1440px);}
+    &:nth-child(11){ left: calc(50% + 1660px);}
+    &:nth-child(12){ left: calc(50% + 1880px);}
+    &:nth-child(13){ left: calc(50% + 2020px); opacity: 0;}   
+}
+
+.content{
+    width: min(20vw ,400px);
+    height: 30vh;
+    position: absolute;
+    top: 50%;
+    left: 3rem;
+    transform: translateY(-50%);
+    font: 400 0.85rem Helvetica,sans-serif;
+    color: rgb(255, 255, 255);
+    background-color: transparent;
+    backdrop-filter: blur(4px);
+    /* background: rgba(0,0,0,.2); */
+    border-radius: 15px;
+    padding: 10px;
+    /* text-shadow: 0px 3px 8px rgba(0,0,0,.5); */
+    opacity: 0.3;
+    display: none;
+    background-color: transparent;
+    border: 1px solid white;
+    box-shadow: 5px 5px 15px 5px rgb(76, 190, 208);
+    overflow-y: scroll;
+    scrollbar-width: none;
+    
+
+    & .tittle {
+        font-family: Arial, Helvetica, sans-serif;
+        text-transform: uppercase;
+    }
+
+    & .description{
+        line-height: 1.7;
+        margin: 1rem 0 1.5rem;
+        font-size: 0.8rem;        
+    }
+
+    button{
+        width: fit-content;
+        background-color: rgba(8, 209, 236, .3);
+        color:rgb(225, 229, 220);
+        border: 2px solid white;
+        border-radius: 12px;
+        padding: 0.5rem;
+        cursor: pointer;
+    }
+}
+
+.item:nth-of-type(2) .content{
+    display: block;
+    animation: anim 0.75 ease-in-out 0.3s forwards;
+}
+
+@keyframes anim{
+    0%{
+        filter: blur(5px);
+        transform:translateY(calc(-50% + 75px))
+    }
+    100%{
+        opacity: 1;
+        filter: blur(0);
+    }
+}
+
+.nav{
+    position:absolute ;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 5;
+    user-select: none;
+
+    & .btn{
+        background-color: rgba(255,255,255,.5);
+        color: black;
+        border: 2px solid black;
+        margin: 0 0.25rem;
+        padding: 0.75rem;
+        border-radius: 50%;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(255,255,255,.3);
+        }
+    }
+}
+
+@media (width > 650px) and (width < 900px){
+    .content{
+        & .tittle {font-size: 0.9rem;}
+        & .description{font-size: 0.65rem;}
+        & button   { font-size: 0.7rem;}
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+    }
+
+    .item{
+        width: 5px;
+        height: 7px;
+
+        & :nth-child(3) {left: 50%;}
+        & :nth-child(4) {left: calc(50% + 170px);}
+        & :nth-child(5) {left: calc(50% + 340px);}
+        & :nth-child(6) {left: calc(50% + 510px); opacity:0;}
+    }
+}
+
+
+@media (width<650px) {
+    .content{
+        & .tittle  {font-size: 0.9rem;}
+        & .description {font-size: 0.65rem;}
+        & button  {font-size: 0.7rem;}
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+    }
+
+    .item{
+        width:120px;
+        height: 220px;
+        opacity: 0;
+
+        &:nth-child(3) {left: 50%;}
+        &:nth-child(4) {left:calc(50% + 140px);}
+        &:nth-child(5) {left:calc(50% + 280px);}
+        &:nth-child(6) {left:calc(50% + 420px); opacity: 0;}
+        
+    }
+}
+   </style>
+</head>
+<body>
+    <main>
+        <ul class="slider">
+            <li class="item" style="background-image: url(https://i.imghippo.com/files/2BxAU1721454946.png);">
+                <div class="content">
+                    <h2 class="tittle">You Are Magical</h2>
+                    <p class="description">i forget return the things I borrowed from people, borrowed happiness lingers around the town via clouds of love in the air, borrowed love used to adorn their withered soul, borrowed smile to alleviate the deepest scars they carry, borrowed melody for their hearts to dance the life away, borrowed books for them to read the eyes of their beloved, yet borrowed pain choked down throat </p>
+                    <button>Read More</button>
+                </div>
+            </li>
+            <li class="item" style="background-image: url(https://i.imghippo.com/files/raJIG1721454971.png);">
+                <div class="content">
+                    <h2 class="tittle">You Are Magical</h2>
+                    <p class="description">The leaves of autumn  of love have fallen into winter of hope, an unwavering hope to see glimpse of sunlight again in this eternal darkness. This cold air brushes through my morbid freezing cheeks, and i ponder if that's a gust of your warmth from miles away yet so close. The dreamy silence in this street yearns for the giggles of a children's park,  and the dying joy of this old longs for the living strength of the youth.</p>
+                    <button>Read More</button>
+                </div>
+            </li>
+            <li class="item" style="background-image: url(https://i.imghippo.com/files/pF9dU1721455012.png);">
+                <div class="content">
+                    <h2 class="tittle">You Are Magical</h2>
+                    <p class="description">Tell me dear  sky for how long have you been bottling up the clouds of emotions behind the curtain of your dense pink canopy that  you burst recklessly today tell me dear sky for how long have you been told to stitch your mouth and suffer in silence that the stiches tear apart and you roar in agony now.</p>
+                    <button>Read More</button>
+                </div>
+            </li>
+            <li class="item" style="background-image: url(https://i.imghippo.com/files/DOSJe1721455033.png);">
+                <div class="content">
+                    <h2 class="tittle">You Are Magical</h2>
+                    <p class="description">You came running towards me As i called your name, That's when i realised what love is. And it's beautiful i proclaim. Your head is like the velvet clouds, Puffed and delicate no doubt, The moment i laid my head upon yours, Peace prevailed and agony died out. When i took you out for a walk, And you chased a cat down the street, And I held you tight to not let go and u dragged me along until retreat It made everyone smile, when u wagged your tail in glee Ran around playing and twirling And Shaked your hand with me.I know i was once afraid, But soon i found a friend in you. A friend who is loyal and loving, And the love is genuine and true.</p>
+                    <button>Read More</button>
+                </div>
+            </li>
+            <li class="item" style="background-image: url(https://i.imghippo.com/files/0P7y41721455055.png);">
+                <div class="content">
+                    <h2 class="tittle">You Are Magical</h2>
+                    <p class="description">Your eyes met mine, Greatest apocalypse of all the time. All the damage caused to the heart, The world, the sky had fallen apaThe moments yearned to relive each day, Are also the moments wished to be faded away From the memories once so magnificent Now turned to into a nightmare not so decent.A considerable tradegy, survived, And itself the broken heart contrived. Can't prevent the pain, only alleviate it, The hypothesis of love deviated.</p>
+                    <button>Read More</button>
+                </div>
+            </li>
+            <li class="item" style="background-image: url(https://i.imghippo.com/files/sDAIs1721455125.png);">
+                <div class="content">
+                    <h2 class="tittle">You Are Magical</h2>
+                    <p class="description">What a wonder it is, That You might not have a single clue That someone somewhere From the core of their heart, writes about Maybe a secret admirer or a long lost friend, How you lie in the words of their poetry, In each phrase until the end.In the notes and the journals In the depth of the pages, With every drop of ink Love buried since ages.They don't express the affection Instead get it down on the paper with bliss And you might not have a single clue about it What a wonder it is.</p>
+                    <button>Read More</button>
+                </div>
+            </li>
+            <li class="item" style="background-image: url(https://i.imghippo.com/files/l8PZ91721455143.png);">
+                <div class="content">
+                    <h2 class="tittle">You Are Magical</h2>
+                    <p class="description">And from what all i could see i suppose we were never meant to be Maybe not this time But i hope in another life I'd be holding your hand Won't let you slip away like grains of sand And walk down the streets with you Making you free from all your blues In the hour of midnight Under the sky with moon so bright In the summer nights so dark We'd hear the melodic lark. Where fresh breeze would make my hair fall upon my fjust for you to tuck it behind my ear with your warm embrace. And I'd give the voice to imaginary conversations i make, Hear me out with every step you take, And I'd look at you with all my feelings again, All the time I'd wait shall not go vain Maybe in that life I'd be your first love And things won't be so rough. And no more cold shoulders to be faced All the memories afterlife erased.</p>
+                    <button>Read More</button>
+                </div>
+            </li>
+              <li class="item" style="background-image: url(https://i.imghippo.com/files/WHL9U1721455176.png);">
+                <div class="content">
+                    <h2 class="tittle">You Are Magical</h2>
+                    <p class="description">"For how long i have to run away from my fears? 1/2 For how long i have to hold back these tears? For how long 'I'm good' i have to pretenUntil it's dark my friend. by any means You must survive, And when the night shall arrive, You get it all off your chest And then you'll be no more depressed At least for a moment or two But that's somewhat enough for you. Let all the tears flow like a stream You pretend to be okay but inside you scream. And the night become your friend, To lighten up your heaviness at the day end. But in the morning you'll have to be strong again, And pretend you're no more filled with pain. And then again you shall wait for the night, Till then my friend, this is a war you'll have to fight.</p>
+                    <button>Read More</button>
+                </div>
+            </li>
+            <li class="item" style="background-image: url(https://i.imghippo.com/files/BpgGz1721455196.png);">
+                <div class="content">
+                    <h2 class="tittle">You Are Magical</h2>
+                    <p class="description">Only if i could do as i desire, all day i would look into his oceanic eyes, Until I'm fully drowned and swallowed By it's waves and tidAnd then the time shall stop, And forever i would be captivated in that ocean so profound, Waited and waited ultimately liberated.Your eyes beloved, A site to adore. I would immerse so deep, Won't search for the shore.Until my breath is gone, And my heart is heavy. Lungs filled with water And i am dead already.</p>
+                    <button>Read More</button>
+                </div>
+            </li>
+            <li class="item" style="background-image: url(https://i.imghippo.com/files/NeudI1721455220.png);">
+                <div class="content">
+                    <h2 class="tittle">You Are Magical</h2>
+                    <p class="description">All the pain and anguish, I let flow upon the pages All the bruises and scars I have been carrying since agMy wounds are deep My heart's is a void There's a pain inside, I tend to avoid.My soul screams, screams the silence It bears the agony, Like a lone island.All the happiness, And healing i desire. Man said he's happy No dear he's liar.</p>
+                    <button>Read More</button>
+                </div>
+            </li>
+            <li class="item" style="background-image: url(https://i.imghippo.com/files/jOVMH1721455238.png);">
+                <div class="content">
+                    <h2 class="tittle">You Are Magical</h2>
+                    <p class="description">Under the night sky Up where the moon lies I talk to the moon I talk about yThe moon confessed Got things outta his chest How he envy you And i confessed i feel blueI told him you're a work of art He heard the beats of my aching heart I told him you're a precious soul He said u two would make it whole.He said he watches the way you walk Your bewitching smile and the way you talk And for my surprise He agreed as i said you got dazzling eyes.And then on we became best friends He would tell me your days and ends. I would tell him the poems i wrote for you And all the things I'm going through.</p>
+                    <button>Read More</button>
+                </div>
+            </li>
+            
+             <li class="item" style="background-image: url();">
+                <div class="content">
+                    <h2 class="tittle">You Are Magical</h2>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                    <button>Read More</button>
+                </div>
+            </li>
+            <li class="item" style="background-image: url();">
+                <div class="content">
+                    <h2 class="tittle">You Are Magical</h2>
+                    <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                    <button>Read More</button>
+                </div>
+            </li>
+             
+        </ul>
+
+        <nav class="nav">
+            <ion-icon class="btn prev" name="arrow-back-outline"></ion-icon>
+            <ion-icon class="btn next" name="arrow-forward-outline"></ion-icon>
+        </nav>
+    </main>
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+   <script>
+           const slider=document.querySelector('.slider');
+
+            function activate(e) {
+            const items=document.querySelectorAll('.item');
+            e.target.matches('.next') && slider.append(items[0]);
+            e.target.matches('.prev') && slider.prepend(items[items.length - 1]);
+        }
+            document.addEventListener('click',activate,true);
+   </script>
+</body>
+</html>
